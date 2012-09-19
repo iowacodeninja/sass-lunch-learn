@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <style type='text/css'>
+    /* set up grid */
+    /* import compass/blueprint */
+    /* set up colors */
+    /* mixins */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #666666; }
+    
+    /* style headers */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      color: #333333;
+      font-weight: normal; }
+      #mainColumn h1, #rightColumn h1, #mainColumn h2, #rightColumn h2, #mainColumn h3, #rightColumn h3, #mainColumn h4, #rightColumn h4, #mainColumn h5, #rightColumn h5, #mainColumn h6, #rightColumn h6 {
+        margin: 0 0 0.5em; }
+    
+    /* style links */
+    a {
+      text-decoration: none;
+      color: #990000; }
+      a:hover {
+        text-decoration: underline; }
+      a:visited {
+        color: #660000; }
+      a:hover {
+        color: #cc0000; }
+    
+    #siteHeader {
+      background: #eeeeee;
+      padding: 0.5em 1em;
+      margin-bottom: 10px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      border-radius: 5px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box; }
+      #siteHeader nav ul {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        *zoom: 1; }
+        #siteHeader nav ul li {
+          list-style-image: none;
+          list-style-type: none;
+          margin-left: 0px;
+          white-space: nowrap;
+          display: inline;
+          float: left;
+          padding-left: 4px;
+          padding-right: 4px; }
+          #siteHeader nav ul li:first-child, #siteHeader nav ul li.first {
+            padding-left: 0; }
+          #siteHeader nav ul li:last-child {
+            padding-right: 0; }
+          #siteHeader nav ul li.last {
+            padding-right: 0; }
+        #siteHeader nav ul li a {
+          display: inline-block;
+          background: #d4d4d4;
+          padding: 0.5em 1em;
+          margin-bottom: 10px;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -o-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -khtml-border-radius: 5px;
+          border-radius: 5px;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+          box-sizing: border-box; }
+          #siteHeader nav ul li a:hover {
+            background: #333333;
+            color: #fff; }
+    
+    #siteContainer {
+      width: 710px;
+      margin: 0 auto;
+      overflow: hidden;
+      *zoom: 1; }
+    
+    #mainColumn {
+      display: inline;
+      float: left;
+      margin-right: 10px;
+      width: 470px; }
+      * html #mainColumn {
+        overflow-x: hidden; }
+    
+    #rightColumn {
+      display: inline;
+      float: left;
+      margin-right: 10px;
+      width: 230px;
+      margin-right: 0; }
+      * html #rightColumn {
+        overflow-x: hidden; }
+    
+    .row {
+      overflow: hidden;
+      *zoom: 1;
+      margin-bottom: 10px; }
+      .row .block {
+        background: #eeeeee;
+        padding: 0.5em 1em;
+        margin-bottom: 10px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box; }
+      .row.two-col .block {
+        display: inline;
+        float: left;
+        margin-right: 10px;
+        width: 230px; }
+        * html .row.two-col .block {
+          overflow-x: hidden; }
+        .row.two-col .block:last-child {
+          margin-right: 0; }
+      .row.three-col .block {
+        display: inline;
+        float: left;
+        margin-right: 10px;
+        width: 150px; }
+        * html .row.three-col .block {
+          overflow-x: hidden; }
+        .row.three-col .block:last-child {
+          margin-right: 0; }
+    
+    .topics {
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      -o-column-count: 2;
+      column-count: 2; }
+      .topics ul {
+        margin: 0; }
+    
+    #siteFooter {
+      clear: both;
+      text-align: center;
+      background: #eeeeee;
+      padding: 0.5em 1em;
+      margin-bottom: 10px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      border-radius: 5px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box; }
+    
+    </style>
+  </head>
+  <body>
+    <section id="siteContainer">
+        <header id="siteHeader">
+            <h1>Ackbar's Trap Emporium</h1>
+            <nav id="contentNav">
+                <ul>
+                    <li><a href="#mon">Mon Calamari</a></li>
+                    <li><a href="#ssd">Super Star Destroyers</a></li>
+                    <li><a href="#repel">Repellants</a></li>
+                    <li><a href="#firepower">Firepower</a></li>
+                    <li><a href="#magnitude">Magnitude</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="mainColumn">
+            <div class="row one-col">
+                <h2>One-Column Row</h2>
+                <div class="block">
+                    <p>Admiral Ackbar is a fictional character in the Star Wars science fiction saga. A member of the amphibious Mon Calamari species, Ackbar was the foremost military commander of the Rebel Alliance who led major combat operations against the Galactic Empire. Ackbar played a supporting role in the 1983 film Return of the Jedi, and later became a prominent character in the novels, comic books and other media of the Star Wars Expanded Universe.</p>
+                </div>
+            </div>
+            <div class="row two-col">
+                <h2>Two-Column Row</h2>
+                <div class="block"> Column One </div>
+                <div class="block"> Column Two </div>
+            </div>
+            <div class="row three-col">
+                <h2>Three-Column Row</h2>
+                <div class="block"> Column One </div>
+                <div class="block"> Column Two </div>
+                <div class="block"> Column Three </div>
+            </div>
+            <div class="row one-col">
+                <h2>One-Column Row With Two Columns of List Items</h2>
+                <div class="block topics">
+                    <ul>
+                        <li>Appearances</li>
+                        <li>Back story</li>
+                        <li>Return of the Jedi</li>
+                        <li>Expanded Universe</li>
+                        <li>Concept and creation</li>
+                        <li>Conception</li>
+                        <li>Portrayals</li>
+                        <li>Cultural impact</li>
+                        <li>Critical reception</li>
+                        <li>"It's a trap!"</li>
+                        <li>Cultural references</li>
+                        <li>References</li>
+                        <li>External links</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="rightColumn">
+            <nav id="rightNav">
+                <h3>Find Us On...</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">The Forest Moon of Endor</a></li>
+                </ul>
+            </nav>
+        </section>
+        <footer id="siteFooter">
+            <p class="copyright">&copy; 2012 Utinni Enterprises.</p>
+        </footer>
+    </section>
+    
+    <script type='text/javascript'>
+    
+    </script>
+  </body>
+</html>

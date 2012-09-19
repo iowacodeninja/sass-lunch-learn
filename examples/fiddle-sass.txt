@@ -1,0 +1,116 @@
+/* set up grid */
+$blueprint-grid-columns: 9;
+$blueprint-grid-margin: 10px; 
+$blueprint-grid-width: 70px;
+
+/* import compass/blueprint */
+@import "compass", "blueprint";
+
+/* set up colors */
+$light-gray: #eee;
+$gray: #666;
+$dark-gray: #333;
+$link-color: #900;
+$serif: Georgia, 'Times New Roman', Times, serif;
+$sans-serif: Arial, Helvetica, sans-serif;
+
+/* mixins */
+@mixin layout-block($background: $light-gray){
+  background: $background;
+  padding: 0.5em 1em;
+  margin-bottom: $blueprint-grid-margin;
+  @include border-radius(5px);
+  @include box-sizing(border-box);
+}
+@mixin last-child(){
+  &:last-child{
+    @include last;
+  }  
+}
+
+body{
+  font-family: $sans-serif;
+  color: $gray;  
+}
+
+/* style headers */
+#{headings()}{
+  #mainColumn &, #rightColumn &{
+    margin: 0 0 0.5em;
+  }
+  font-family: $serif;
+  color: $dark-gray;
+  font-weight: normal;
+}
+
+/* style links */
+a{
+  @include hover-link;
+  color: $link-color;
+  &:visited{
+   color: darken($link-color, 10%); 
+  }
+  &:hover{
+   color: lighten($link-color, 10%); 
+  }
+}
+
+#siteHeader{
+  @include layout-block;
+  nav{
+    ul{
+      @include horizontal-list;
+      li{
+        a{
+          display: inline-block;
+          @include layout-block(darken($light-gray, 10%));
+          &:hover{
+            background: $dark-gray;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+#siteContainer{
+  @include container;  
+}
+#mainColumn{
+  @include column(6);
+}
+#rightColumn{
+  @include column(3);
+  @include last;
+}
+
+.row{
+  @include clearfix;
+  margin-bottom: $blueprint-grid-margin;
+  .block{  
+    @include layout-block;
+  }
+  &.two-col .block{
+    @include column(3);
+    @include last-child;
+  }
+  &.three-col .block{
+    @include column(2);
+    @include last-child;
+  }
+}
+
+.topics{
+  @include column-count(2);  
+  ul{
+    margin: 0;
+  }
+}
+
+
+#siteFooter{
+  clear: both;
+  text-align: center;
+  @include layout-block;
+}

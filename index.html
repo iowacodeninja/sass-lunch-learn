@@ -1,0 +1,811 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Learning SASS and Compass</title>
+
+		<meta name="description" content="Give your CSS superpowers">
+		<meta name="author" content="Christa Dickson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <style>
+			.reveal ul{ margin-bottom: 0.5em; }
+			.reveal li{ margin-bottom: 0.25em; }
+			.reveal li ul{ font-size: 90%; margin-top: 0.35em; }
+			.reveal li ul li{ margin-bottom: 0; }
+			.reveal p{ margin: 0.25em 0; }		
+			@media screen and (max-width: 800px) and (max-height: 600px){
+				body{
+					font-size: 25px;
+				}
+				.reveal .slides > section{
+					padding-top: 1em;
+				}
+				.reveal code{
+					font-size: 120%;
+					line-height: 1.3;
+				}
+				.reveal pre{
+					width: 98%;
+				}
+			}										
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<script>
+			// If the query includes 'print-pdf' we'll use the PDF print sheet
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Learning SASS and Compass</h1>
+					<p>Or, CSS With Superpowers</p>
+					<p><small>by <a href="mailto:christa.dickson@meredith.com">Christa Dickson</a></small></p>
+				</section>
+                
+                <section>
+                	<h2>What You're In For</h2>
+                    <ul>
+                    	<li><a href="#/2">Intro/Definitions</a></li>
+                    	<li><a href="#/6">Tools/Workflow</a></li>
+                        <li><a href="#/8">SASS/Compass Features</a></li>
+                        <li><a href="#/26">Specific problems we solved with SASS for Parents.com</a></li>
+                        <li><a href="#/28">Try It Yourself!</a></li>
+                    </ul>
+                </section>
+				
+				<section>
+                    <h2>What is SASS?</h2>
+                    <ul>
+                        <li class="fragment">A CSS pre-compiler</li>
+                        <li class="fragment">Allows you to use helpful programming concepts in your CSS:
+                            <ul>
+                                <li>Variables </li>
+                                <li>Functions </li>
+                                <li>Includes </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><small><a href="http://sass-lang.com/" target="_blank">Full Sass Documentation</a></small></p>
+				</section>
+				
+				<section>
+					<h2>What is Compass?</h2>
+                    <ul>
+                        <li class="fragment">A framework for SASS </li>
+                        <li class="fragment">Comes with pre-packaged functions &amp; mixins 
+                        	<ul class="fragment">
+                            	<li>resets</li>
+                                <li>color helpers</li>
+                                <li>sprites</li>
+                                <li>grids</li>
+                                <li>CSS3 helpers</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><small><a href="http://compass-style.org/" target="_blank">Full Compass Documentation</a></small></p>
+                </section>
+                
+                <section>
+                    <h2>Just so we're clear...</h2>
+                    <ul>
+                        <li class="fragment"><em>SASS </em>is the language </li>
+                        <li class="fragment"><em>Compass </em>is the framework </li>
+                        <li class="fragment">By their powers combined we get <em>CSS </em></li>
+                    </ul>
+				</section>
+
+                <section>
+                	<h2>Why should we use it?</h2>
+                    <ul>
+                    	<li class="fragment">It's faster to write than normal CSS</li>
+                        <li class="fragment">Makes nesting simpler, easier to manage </li>
+                    	<li class="fragment">Makes implementation of CSS3 features easier/faster</li>
+                        <li class="fragment">Makes maintenance easier down the road</li>
+                        <li class="fragment">Enables us to be smart and reusable with our code</li>
+                        <li class="fragment">Plus, it's neat!</li>
+                    </ul>
+                </section>
+                
+                
+				<section>
+					<h2>Any Drawbacks?</h2>
+                    <ul>
+                        <li class="fragment">Ease of nesting can lead to overly verbose code </li>
+                        <li class="fragment">Style overrides can get tricky to find </li>
+                        <li class="fragment">Sprite generation/management is buggy, especially with our setup </li>
+                        <li class="fragment">New workflows/setup/learning curve </li>
+                    </ul>
+				</section>
+                
+                
+				<section>
+                	<section>
+                        <h2>Tools</h2>
+                        <p>So what do we need to get SASSy?</p>
+                        <ul>
+                            <li class="fragment">Text editor </li>
+                            <li class="fragment">Local Compass instance (Ruby)  </li>
+                        </ul>
+					</section>
+				
+                    <section>
+						<h2>We use...</h2>
+                        <ul>
+                            <li>jRuby</li>
+                            <li>gem install of Compass</li>
+                            <li>A homegrown IntelliJ plugin </li>                            
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Other options:</h2>
+                        <ul>
+                            <li><a href="http://mhs.github.com/scout-app/" target="_blank">Scout</a>, <a href="http://compass.handlino.com/" target="_blank">Compass.app</a>
+                <ul>
+                                    <li>easier to setup, but less configurable </li>
+                                </ul>
+                            </li>
+                            <li >Command line install of Ruby and Compass
+                                <ul>
+                                    <li>seriously easy</li>
+                                </ul>
+                            </li>
+                        </ul>
+					</section>                    
+				
+                    <section>
+                        <h2>Workflow: Local dev environment</h2>
+                        <ol>
+                            <li class="fragment">Set up a Compass project </li>
+                            <li class="fragment">Set up a folder watch </li>
+                            <li class="fragment">Write SASS code (file.scss) </li>
+                            <li class="fragment">The watch compiles SASS to CSS on save (file.css) </li>
+                        </ol>
+                    </section>
+                    <section>
+                    <section>
+                        <h2>Workflow: Dev/test</h2>
+                        <ul>
+                            <li>Commit the .scss files to dev/test </li>
+                            <li class="fragment">At build time, all .scss files are compiled to .css files </li>
+                        </ul>                        
+                    </section>
+                    
+                    <section class="fragment">
+                        <h3>Important Note!</h3>
+                        <p>You won't ever edit or commit the .css files.</p>
+                        <p class="fragment"><em>EVAR.</em></p>
+                    </section>
+                    </section>
+                </section>
+
+				
+				<section>
+					<h2>SASS/Compass Features</h2>
+                    <ul class="fragment">
+                        <li><a href="#/9">Nesting</a></li>
+                        <li><a href="#/11">Variables</a></li>
+                        <li><a href="#/12">@imports</a> </li>
+                        <li><a href="#/14">Mixins</a> </li>
+                        <li><a href="#/24">Functions</a> </li>
+                        <li><a href="#/22">Sprites</a></li>
+                    </ul>
+				</section>
+
+				<section>
+                	<section>
+						<h2>Nesting</h2>
+<pre class="fragment"><code>#navbar {
+  width: 80%;
+  height: 23px;
+
+  ul { list-style-type: none; }
+  li {
+    float: left;
+    a { font-weight: bold; }
+  }
+}</code></pre>                        
+                    </section>
+                    
+                    <section>
+                        <h2>Outputs To:</h2>
+                        <pre><code>#navbar {
+  width: 80%;
+  height: 23px; }
+  #navbar ul {
+    list-style-type: none; }
+  #navbar li {
+    float: left; }
+    #navbar li a {
+      font-weight: bold; }
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Nesting 201</h2>
+                        <h3>Pseudo classes and the Almighty Ampersand</h3>
+<pre class="fragment"><code contenteditable>a {
+  color: #ce4dd6;
+  &:hover { color: #ffb3ff; }
+  &:visited { color: #c458cb; }
+}						</code></pre>
+					</section>
+                    <section>
+                    	<h2>Outputs To:</h2>
+<pre><code>a {
+  color: #ce4dd6; }
+  a:hover {
+    color: #ffb3ff; }
+  a:visited {
+    color: #c458cb; }
+</code></pre>
+					</section>
+                    		
+				</section>
+                <section>
+                <section>
+						<h2>Nesting: Things to Note</h2>
+                        <p class="fragment">Nesting tags within each other translates to a SPACE (descendant selector). </p>
+                        <div class="fragment">
+<pre><code contenteditable>#siteContainer{
+  .block{}
+}
+</code></pre>
+<pre><code>/* Outputs to... */ 
+#siteContainer .block{}
+</code></pre>
+						</div>
+					</section>	
+                    <section>
+						<h2>Nesting: &amp;:pseudo or &amp;.class</h2>
+                        <p>Using the ampersand in FRONT removes the space. </p>
+                        <div class="fragment">
+<pre><code>#siteContainer{
+  &amp;.block{}
+  &amp;:hover{}
+}
+</code></pre>
+<pre><code>/* Outputs to... */ 
+#siteContainer.block{}
+#siteContainer:hover{}
+</code></pre>
+						</div>
+					</section>
+                    <section>
+						<h2>Nesting: .class &amp;</h2>
+					    <p>Using the ampersand BEHIND specifies a parent selector. </p>
+						<div class="fragment">
+<pre><code>#siteContainer{
+  color: red;
+  .blue &amp;{
+    color: blue;
+  }
+}
+</code></pre>
+<pre><code>/* Outputs to... */
+#siteContainer{ color: red; }
+.blue #siteContainer{ color: blue; }
+</code></pre>
+						</div>
+					</section>			
+                </section>
+
+				<section>
+					<section>
+                        <h2 id="section-Variables">Variables</h2>
+                        <p>Variables are used to store/reuse commonly used pieces of information </p>
+<pre><code>$green: #8fc357;
+
+#siteNavContainer{
+  background-color: $green;
+}
+</code></pre>
+                    </section>
+                    <section>
+                    	<h2>Variable Math</h2>
+                        <p>You can do addition, subtraction, multiplication and division on variables.</p>
+<pre class="fragment"><code>$margin: 16px;
+
+.border {
+  padding: $margin / 2;
+  margin: $margin + 5px;
+}
+</code></pre>
+                    </section>
+                    
+                    <section>
+                    	<h2>Variable Output/Interpolation</h2>
+						<p>This standard output format will work in most cases:</p>
+<pre><code>color: $green; </code></pre>
+						<p class="fragment">But what if you want to use the variable as part of the property name?</p>
+<pre class="fragment"><code>/* doesn't work */
+border-$direction: 1px solid $green;
+
+/* does work */
+border-{$direction}: 1px solid $green;
+</code></pre>
+                    </section>
+				</section>
+
+				<section>
+                	<section>
+                        <h2>@import - CSS Includes</h2>
+                            <p>Allows you to include smaller stylesheets inside larger ones.</p>
+<pre><code>@import "partials/filename"</code></pre>                    
+					</section>	
+                    <section>
+                    	<h2>Fun with Partials</h2>
+<pre><code>@import "partials/filename"</code></pre>                             
+                        <ul>
+                            <li>The files you include are called 'partials'
+                                <ul class="fragment">
+                                    <li>Partials usually begin with an underscore, e.g., <b>_base.scss </b>
+                                    <li>The underscore tells SASS not to compile them to their own stylesheets </li>
+                                </ul>
+                            </li>
+                            <li class="fragment">You can import libraries (like Compass) or your own partials </li>
+                            <li class="fragment">Partials are awesome because they allow to you to split up large files into small pieces and then recombine later </li>
+                        </ul>
+					</section>	                    
+				</section>
+                <section>
+                        <h2>Import Example</h2>
+<pre><code>/* include the Compass framework */
+@import "compass";
+
+/* include a file inside your folder, 'partials/_colors.scss' */
+@import "partials/colors";
+</code></pre>
+					</section>
+
+                	<section>
+                        <h2>Mixins </h2>
+                        <p>Mixins are reusable, configurable chunks of CSS.</p>
+<pre><code>@include my-mixin;</code></pre>
+					</section>
+					
+                    <section>                    
+						<h2>Two types of mixins:</h2>
+                        <ul>
+                            <li class="fragment">Pre-built mixins (from Compass) </li>
+                            <li class="fragment">Roll-your-own mixins </li>
+                        </ul>
+                    </section>                
+					<section>
+                    	<h2>Example: Using a Compass Mixin</h2>
+<pre><code>/* turns a bulleted list into a horizontal list */
+
+ul.horizontal{
+  @include horizontal-list;
+}
+</code></pre>
+					</section>
+
+                	<section>
+						<h2>Some Useful Compass Mixins/Functions</h2>
+					</section>
+                    <section>
+						<h2>HTML Reset</h2>
+						<p>Old way:</p>
+<pre><code>&lt;link href="/web/css-min/common/css/html5Reset.css" rel="stylesheet"&gt; </code></pre>
+						<div class="fragment">
+						<p>New way:</p>
+<pre><code>@import "blueprint/reset"; </code></pre>
+						</div>
+					</section>
+                    <section>
+                    <section>
+						<h2>Color Manipulation</h2>
+<pre><code>$green: #128c7f;
+$light-green: lighten($green, 20%);
+$dark-green: darken($green, 20%);
+</code></pre>							
+                    </section>
+                    <section>
+                        <h3>Other Color Methods</h3>
+                        <ul>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#saturate-instance_method" target="_blank">saturate</a> </li>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#desaturate-instance_method" target="_blank">desaturate</a> </li>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#grayscale-instance_method" target="_blank">grayscale</a> </li>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#invert-instance_method" target="_blank">invert</a> </li>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#opacify-instance_method" target="_blank">opacify</a> </li>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#transparentize-instance_method" target="_blank">transparentize</a> </li>
+                            <li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#rgba-instance_method" target="_blank">rbga</a> </li>
+                        </ul>
+                    </section>
+                    </section>
+                    <section>
+                    <section>
+						<h2>Browser Prefix Management</h2>
+						<p>Old way:</p>
+<pre><code>.rounded-corner{
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px; 
+}
+</code></pre>
+						<div class="fragment">
+						<p>New way:</p>
+<pre><code>.rounded-corner{ 
+  @include border-radius(4px); 
+}
+</code></pre>
+						</div>
+					</section>
+                    <section>
+                    	<h3>Other Browser Prefix Helpers</h3>
+                        <ul>
+                            <li><a href="http://compass-style.org/reference/compass/css3/transform/#mixin-translate" target="_blank">translate</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/transform/#mixin-rotate" target="_blank">rotate</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/box_sizing/" target="_blank">box-sizing</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/images/" target="_blank">linear-gradient</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/images/" target="_blank">radial-gradient</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/columns/" target="_blank">column-count</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/opacity/" target="_blank">opacity</a> </li>
+                            <li><a href="http://compass-style.org/reference/compass/css3/transition/" target="_blank">transition</a> </li>
+                        </ul>
+                    </section>
+                    </section>
+					<section>
+                        <h2>Grids</h2>
+                        <p>Grids require math.  Compass does the math for you!</p>
+<pre class="fragment"><code>// grid setup
+$blueprint-grid-columns: 9;
+$blueprint-grid-margin: 20px; 
+$blueprint-grid-width: 90px;
+
+#siteContainer{
+  @include container;
+}
+#mainColumn{
+  @include column(6);
+}
+#rightColumn{
+  @include column(3);
+  @include last;
+}
+</code></pre>
+					</section>
+<section>
+                	<section>
+                        <h2>Sprites</h2>
+                         <p>Compass gives you tools to generate sprites automagically.</p>
+<pre><code>@import "my-icons/*.png";</code></pre>
+                       
+					</section>
+                    <section>
+                    	<h2>Sprite Basic Steps</h2>
+                        
+                        <ol>
+                            <li class="fragment">Put individual PNGs in a folder under images </li>
+                            <li class="fragment">Define spacing/orientation </li>
+                            <li class="fragment">Your sprite is generated at compile/build time </li>
+                        </ol>                    
+<pre class="fragment"><code>@import "my-icons/*.png";
+.actions {
+  .new    { @include my-icons-sprite(new);    }
+  .edit   { @include my-icons-sprite(edit);   }
+}
+</code></pre>
+					</section>
+                    <section>                        
+                        <h2>Sprite Benefits</h2>
+                        <ul>
+                            <li class="fragment">You don't have to keep track of where the image is in the sprite... you can call it by name </li>
+                            <li class="fragment">You can get dimensions/position from mixins 
+<pre><code>$width: my-icons-sprite-width(new);</code></pre>                            
+                            </li>
+                            <li class="fragment">Code is more human-readable</li>
+                        </ul>
+					</section>
+                    <section>
+                        <h2>Sprite Drawbacks</h2>
+                        <ul>
+                            <li class="fragment">Sprite order is inconsistent (alpha vs. by file size)
+                            	<ul class="fragment">
+                                	<li>Unusable for retina versions </li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Assumes sprites will be on your local filesystem (vs. Interwoven) </li>
+                            <li class="fragment">No compression </li>
+                            <li class="fragment">If you update and forget to commit an image file, builds will fail </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Sprite Verdict</h2>
+                        <ul>
+                            <li class="fragment">Good for original generation</li>
+                            <li class="fragment">Not so good for upkeep </li>
+                            <li class="fragment">One option... use Compass to generate original sprite, then take generated CSS moving forward </li>
+                        </ul>
+                            <p class="fragment"><small><a href="http://compass-style.org/help/tutorials/spriting/" target="_blank">Full Compass sprite documentation</a></small></p>
+                    </section>
+				</section>
+                				
+				<section id="mixin-201">
+                	<section>
+					<h2>Mixins 201:</h2>
+                    <h3>Rolling Your Own Mixin</h3>
+<pre class="fragment"><code>@mixin green-me(){
+  background-color: #9f9;
+  border: 2px solid #096;
+}
+
+p{
+  @include green-me;
+}
+</code></pre>
+					</section>
+                    <section>
+						<h2>Passing Arguments to Mixins</h2>
+						<p>You can define arguments to be passed into your mixin to change the output. </p>
+<pre class="fragment"><code>@mixin green-me($border-style: solid){
+  background-color: #9f9;
+  border: 2px $border-style #096;
+}
+
+p{
+  @include green-me($border-style: dashed);
+}
+</code></pre>
+					</section>
+                    <section>
+						<h2>Using Logic in Mixins</h2>
+					    <p>You can use basic control structures (if/else, for loops) in mixins.</p>
+<pre class="fragment"><code>@mixin color-me($color: blue, $border-style: solid){
+  @if $color == blue{
+    background-color: #b2deed;
+    border: 2px $border-style #008bb4;
+  }@else if $color == green{
+    background-color: #9f9;
+    border: 2px $border-style #096;
+  }
+}
+
+p{
+  @include color-me($color: green, $border-style: dashed);
+}
+</code></pre>
+					</section>
+                    <section>
+                        <h2>When to Use a Mixin vs. a Partial</h2>
+                        <ul>
+                            <li class="fragment">In general, mixins should be used for shorter chunks of code </li>
+                            <li class="fragment">Partials should be used when there's larger chunks </li>
+                            <li class="fragment">The more mixins you add, the longer it takes to compile </li>
+							<li class="fragment">The more partials you have, the more confusing your file structure </li>
+                        </ul>
+                            <p class="fragment"><em>Balance it out somewhere in the middle. </em></p>
+                    </section>
+				</section>
+				
+				
+                	<section>
+                        <h2 id="section-Functions">Functions</h2>
+                        <p>Similar to mixins, but they generally use math or logic to return a <em>value</em> (rather than a set of styles). </p>
+<pre class="fragment"><code>/* Compass span function: returns a width in columns */
+@function span($n) {
+  @return $blueprint-grid-width * $n 
+  	 + $blueprint-grid-margin * ($n - 1); 
+}
+
+#mainColumn{
+  width: span(6);
+}  
+</code></pre>
+					</section>
+
+				<section>
+                        <h2>Understanding Mixins vs. Functions</h2>
+                        <ul>
+                            <li class="fragment">Mixins usually output CSS <em>rules</em> </li>
+                            <li class="fragment">Functions usually output a property value or other <em>piece</em> of a CSS rule </li>
+                        </ul>
+                                 
+<pre class="fragment"><code>/* this is the column mixin (does floating, margin and width) */
+#mainColumn{
+  @include column(6);
+}
+/* this is the span function (just returns width) */
+#mainColumn{
+  width: span(6);
+}
+</code></pre>
+					</section>     
+				
+				<section>
+                	<section>
+						<h2>Specific problems we solved with SASS for Parents.com</h2>
+                        <ul>
+                        	<li class="fragment"><a href="#/16/6">Grid layout for responsive design</a></li>
+                            <li class="fragment"><a href="#/26/1">Creating responsive &amp; non-responsive versions of stylesheets</a></li>
+                            <li class="fragment"><a href="#/26/3">Reducing upkeep on image.css and secureimage.css</a></li>
+                            <li class="fragment"><a href="#/26/6">Built a reusable style library using mixins</a></li>
+                            <li class="fragment">Browser prefix management enabled us to use cool CSS3 features with more confidence</li>
+                        </ul>
+                    </section>
+                    <section>
+                    	<h2>Creating responsive &amp; non-responsive versions of stylesheets</h2>
+                        <p>We used imports of partials with media queries. </p>
+                    </section>
+                    <section>
+                        
+<pre><code>// ---- core-responsive.scss ---
+/* mobile layout */
+@media screen and (max-width: 653px){
+  @import "partials/narrow/core";
+}
+/* tablet portrait */
+@media screen and (min-width: 654px){
+  @import "partials/normal/core";
+}
+/*  Widescreen layout */
+@media screen and (min-width: 990px){
+  @import "partials/wide/core";
+}  
+
+// ---- core.scss ---
+@import "partials/narrow/core";
+@import "partials/normal/core";
+@import "partials/wide/core";
+</code></pre>
+					</section>
+                    
+                    <section>
+                            <h2>Identical image.css and secureimage.css</h2>
+                            <p>Same trick, with additional variables </p>
+                 	</section>
+                    <section>
+<pre><code>// ---- image.scss ----
+$secure: false;
+@import "partials/image";
+
+// ---- secureimage.scss ----
+$secure: true;
+@import "partials/image";
+
+// ---- partials/image.scss ----
+$image_path: "http://images.meredith.com/parents/";
+$secure_image_path: "https://secure.parents.com/parents/";
+@if $secure{
+  $image_path: $secure_image_path;    
+}
+
+#header{
+  background: url("#{$image_path}image.png";
+}</code></pre>
+					</section>
+                    <section>
+						<h3>Example Code: Output</h3>
+<pre><code>                        
+/* ---- image.css ---- */
+#header{ 
+  background: url("http://images.meredith.com/image.png"; 
+}
+
+/* ---- secureimage.css ---- */
+#header{ 
+  background: url("https://secure.parents.com/image.png"; 
+}
+</code></pre>
+                 </section>
+                 <section>
+						<h2>Built a reusable mixin library</h2>
+<pre><code>a.more{ 
+  @include block-more-link;
+}
+
+ul{
+  @include pink-bullets;
+}
+
+.blogModule{
+  @include content-box;
+}
+
+.up{
+  @include triangle($direction: up, $size: 10px);
+}
+</code></pre>
+					</section>
+               </section>                              
+                								
+				<section>
+					<h2>Try It Yourself!</h2>
+                    <ul>
+                        <li>Hands-On Example: <br/><a href="http://tinkerbin.com/hBuyfjFQ" target="_blank">http://tinkerbin.com/hBuyfjFQ</a>
+							<!--<ul>
+								<li class="fragment"><a href="examples/fiddle.html" target="_blank">Start with this...</a></li>
+								<li class="fragment"><a href="examples/fiddle-finished.html" target="_blank">End with this!</a></li>
+							</ul>-->
+						</li>
+                        <li class="fragment">Finished Example:<br /> <a href="http://tinkerbin.com/wm5x5V41" target="_blank">http://tinkerbin.com/wm5x5V41</a></li>
+                    </ul>
+				</section>
+				
+                <section>
+					<h2>More Links</h2>
+                    <ul>
+                        <li><a href="http://sass-lang.com/tutorial.html" target="_blank">Basic SASS Tutorial</a> </li>
+                        <li><a href="http://compass-style.org/help/tutorials/" target="_blank">Index of official Compass tutorials</a> </li>
+                        <li><a href="http://www.netmagazine.com/tutorials/code-smarter-css-sass" target="_blank">Code smarter CSS with Sass</a> </li>
+                        <li><a href="http://delicious.com/christapolis/sass+compass" target="_blank">My 'Sass' &amp; 'Compass' tags on Delicious</a> </li>
+                    </ul>
+				</section>
+
+				<section>
+					
+                   
+						<img src="QuestionCat.jpg" alt="Question cat has questions">
+					<p>Questions?</p>
+					<p><a href="mailto:christa.dickson@meredith.com">christa.dickson@meredith.com</a></p>
+				</section>
+				
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Presentation progress bar -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				
+				theme: Reveal.getQueryHash().theme || 'default', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+				]
+			});
+			
+		</script>
+
+	</body>
+</html>
